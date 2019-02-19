@@ -1,4 +1,3 @@
-running = True
 
 def main():
     """
@@ -23,11 +22,11 @@ def processUserInput(userInput, story):
     except:
         print("Invalid input... Try again.")
     
-    if (userOption > 0) and (userOption <= (len(currentDecision.options))):
+    if (userOption > 0) and (userOption <= (len(story1.currentDecision.options))):
         # if the option has an associated action, do it.
         if (story1.currentDecision.options[userOption - 1].action):
             story1.currentDecision.options[userOption - 1].action()
-        story1.currentDecision = currentDecision.options[userOption - 1].destination
+        story1.currentDecision = story1.currentDecision.options[userOption - 1].destination
         
         
     else:
@@ -106,6 +105,7 @@ class StoryTree():
         option2 = Option("Open safe with grenade")
         self.decision2_2hospital.options = [option1, option2]
 
+running = True
 story1 = StoryTree()
 currentDecision = story1.decision1_1gowhere
 main()
